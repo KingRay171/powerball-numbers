@@ -1,0 +1,44 @@
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: black;
+        color: white;
+        font-family: "Roboto";
+    }
+
+    body {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .header {
+        background-color: gray;
+        display: flex;
+        padding-left: 2em;
+
+    }
+
+    .main {
+        display: flex;
+        justify-content: space-between;
+        
+    }
+
+    .input {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .results-list {
+        display: flex;
+        background-color: gray;
+        height: 80vh;
+        min-width: 50vw;
+        max-width: 50vw;
+        word-wrap: normal;
+    }
+}
+
