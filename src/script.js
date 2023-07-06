@@ -27,7 +27,10 @@ getPermutations.addEventListener("click", () => {
     console.log(permutations)
     outputDiv.textContent = ""
     permutations.forEach(e => {
-        outputDiv.textContent += (e + ", ")
+        let set = new Set()
+        let noRepeats = e.split("").forEach(char => set.add(char))
+        
+        outputDiv.textContent += (Array.from(set).join("") + ", ")
     })
 
     outputDiv.textContent == outputDiv.textContent.substring(0, outputDiv.textContent.length - 2)
