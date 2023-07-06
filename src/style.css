@@ -33,5 +33,10 @@ body {
     min-width: 50vw;
     max-width: 50vw;
     word-wrap: normal;
+    overflow-y: auto;
+}
+
+.permutation-size {
+    width: 5vw;
 }
 
