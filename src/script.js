@@ -3,35 +3,45 @@ const outputDiv = document.querySelector(".results-list")
 const inputNums = document.querySelector(".numbers")
 const permutationSizeInput = document.querySelector(".permutation-size")
 
-function convert(num, arr, permSize) {
+function combinationUtil(arr,data,start,end,index,r, currentResults)
+{
+
     let results = []
-    for(i = 0; i < permSize; i++){
-        results.push(parseInt(arr[num % arr.length]))
-        num = parseInt(num / arr.length);
+    if (index == r)
+    {
+        for (let j=0; j<r; j++)
+        {
+            results.push(data[j]);
+        }
     }
-    return results.join("");
+    currentResults.push(results)
+
+    for (let i=start; i<=end && end-i+1 >= r-index; i++)
+    {
+        data[index] = arr[i];
+        combinationUtil(arr, data, i+1, end, index+1, r, currentResults);
+    }
+
+    return currentResults
 }
-
-function permute(nums, permSize) {
-    let results = []
-
-    for (var i = 0; i < parseInt(Math.pow(nums.length, 3)); i++) {
-        results.push(convert(i, nums, permSize))
-    }
-    return results
-};
+ 
+function printCombination(arr,n,r)
+{
+    let data = new Array(r);
+     
+    return combinationUtil(arr, data, 0, n-1, 0, r, []);
+}
+ 
 
 getPermutations.addEventListener("click", () => {
-    console.log(permutationSizeInput.value)
-    let permutations = permute(`${inputNums.value}`.split(""), permutationSizeInput.value)
-    console.log(permutations)
-    outputDiv.textContent = ""
-    permutations.forEach(e => {
-        let set = new Set()
-        let noRepeats = e.split("").forEach(char => set.add(char))
-        
-        outputDiv.textContent += (Array.from(set).join("") + ", ")
-    })
+    let inputAsArr = `${inputNums.value}`.split("")
+    let result = printCombination(inputAsArr, inputAsArr.length, 3).filter(e => e.length !== 0)
+    console.log(result)
+
+
+    outputDiv.textContent =  ""
+
+    result.forEach(e => outputDiv.textContent += (e.join("") + ", "))
 
     outputDiv.textContent == outputDiv.textContent.substring(0, outputDiv.textContent.length - 2)
 
