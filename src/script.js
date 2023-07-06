@@ -35,7 +35,7 @@ function printCombination(arr,n,r)
 
 getPermutations.addEventListener("click", () => {
     let inputAsArr = `${inputNums.value}`.split("")
-    let result = printCombination(inputAsArr, inputAsArr.length, 3).filter(e => e.length !== 0)
+    let result = printCombination(inputAsArr, inputAsArr.length, permutationSizeInput.value).filter(e => e.length !== 0)
     console.log(result)
 
 
